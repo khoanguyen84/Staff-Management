@@ -1,0 +1,84 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.container{
+    max-width: 900px;
+    margin: 0px auto;
+}
+
+.create-staff{
+    width: 100%;
+    padding: 10px 0px;
+}
+
+.form-group{
+    display: flex;
+    align-items: center;
+    margin-bottom:2px ;
+}
+
+.form-group>label{
+    width: 20%;
+}
+.form-control{
+    width: 250px;
+    padding: 5px 2px;
+    outline: none;
+}
+
+.btn{
+    border: none;
+    outline: none;
+    padding: 10px 25px;
+    border-radius: 3px;
+}
+
+.btn-success{
+    background-color: green;
+    color: white;
+}
+
+.btn-success:hover{
+    background-color: darkgreen;
+    cursor: pointer;
+}
+
+.table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table>thead>tr>th{
+    padding: 10px 5px;
+    text-align: left;
+}
+.table>thead>tr>th:first-child{
+    text-align: center;
+}
+
+.table>tbody>tr>td{
+    padding: 7px 5px;
+}
+
+.table>tbody>tr>td:first-child{
+    text-align: center;
+}
+
+.table-hover>tbody>tr:hover{
+    background-color: aquamarine;
+    cursor: pointer;
+}
+.avatar-fullname{
+    display: flex;
+    align-items: center;
+}
+
+.avatar{
+    width: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}

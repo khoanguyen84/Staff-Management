@@ -4,11 +4,115 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
     <link rel="stylesheet" href="staff.css">
     <link rel="shortcut icon" href="images/logo.jpg" type="image/x-icon">
     <title>Staff management</title>
 </head>
 <body>
+    <div class="container">
+        <div class="create-staff">
+            <div class="form-group">
+                <label for="fullname">Fullname</label>
+                <input type="text" id="fullname" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="position">Position</label>
+                <select id="position" class="form-control">
+                    <option value="1">CEO</option>
+                    <option value="2">Head of SMM</option>
+                    <option value="3">PM</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="dob">Date of birth</label>
+                <input type="datetime" id="dob" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="experience">Experience</label>
+                <input type="number" id="experience" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="skills">Position</label>
+                <select id="skills" class="form-control">
+                    <option value="1">Business Analytic</option>
+                    <option value="2">Marketing Stategy</option>
+                    <option value="3">Q/A</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label></label>
+                <input type="button" class="btn btn-success" value="Create">
+            </div>
+        </div>
+        <div class="display-staff">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            <input type="checkbox">
+                        </th>
+                        <th>Fullname</th>
+                        <th>Position</th>
+                        <th>Date of birth</th>
+                        <th>Experience</th>
+                        <th>Skills</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td>
+                            <div class="avatar-fullname">
+                                <img class="avatar" src="https://i.pravatar.cc/150?img=3" alt="">
+                                <span>Khoa Nguyễn</span>
+                            </div>
+                        </td>
+                        <td>Position</td>
+                        <td>Date of birtd</td>
+                        <td>Experience</td>
+                        <td>Skills</td>
+                        <td>
+                            <i class="fa-solid fa-user-pen"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td>
+                            <div class="avatar-fullname">
+                                <img class="avatar" src="https://i.pravatar.cc/150?img=3" alt="">
+                                <span>Khoa Nguyễn</span>
+                            </div>
+                        </td>
+                        <td>Position</td>
+                        <td>Date of birtd</td>
+                        <td>Experience</td>
+                        <td>Skills</td>
+                        <td>
+                            <i class="fa-solid fa-user-pen"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td>
+                            <div class="avatar-fullname">
+                                <img class="avatar" src="https://i.pravatar.cc/150?img=3" alt="">
+                                <span>Khoa Nguyễn</span>
+                            </div>
+                        </td>
+                        <td>Position</td>
+                        <td>Date of birtd</td>
+                        <td>Experience</td>
+                        <td>Skills</td>
+                        <td>
+                            <i class="fa-solid fa-user-pen"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
     <script src="staff.js"></script>
 </body>
 </html>
