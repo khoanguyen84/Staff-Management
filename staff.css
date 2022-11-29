@@ -13,8 +13,20 @@
 .create-staff{
     width: 100%;
     padding: 10px 0px;
+    display: flex;    
+    justify-content: space-between;
 }
 
+.staff-info{
+    width: 70%;
+    margin-right: 3px;
+}
+.staff-avatar{
+    width: 30%;
+}
+.staff-avatar>img{
+    width: 100%;
+}
 .form-group{
     display: flex;
     align-items: center;
@@ -22,10 +34,10 @@
 }
 
 .form-group>label{
-    width: 20%;
+    width: 25%;
 }
 .form-control{
-    width: 250px;
+    width: 75%;
     padding: 5px 2px;
     outline: none;
 }
