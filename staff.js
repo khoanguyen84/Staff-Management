@@ -112,9 +112,11 @@ function createStaff() {
 
 function resetCreateForm(){
     document.querySelector('#fullname').value = "";
-    document.querySelector('#avatar').src = "images/noavatar.jpg";
+    document.querySelector('#avatar').value = "";
     document.querySelector('#dob').value = "";
     document.querySelector('#experience').value = "";
+    document.querySelector('#reviewAvatar').src = "images/noavatar.jpg";
+    
     renderPosition();
     renderSkills();
 }
