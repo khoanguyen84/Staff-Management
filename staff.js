@@ -12,6 +12,8 @@ class Staff {
 
 var staffs = [];
 
+var selectedStaffs = [];
+
 var positions = [
     "CEO",
     "Head of SMM",
@@ -28,8 +30,8 @@ var skills = [
 ]
 
 const staff_db = "staff_db";
-function init(){
-    if(localStorage.getItem(staff_db) == null){
+function init() {
+    if (localStorage.getItem(staff_db) == null) {
         staffs = [
             new Staff(1, "Khoa Nguyễn", "https://i.pravatar.cc/150?img=3", "CEO", "2011-03-05", 5, "Business Analytic"),
             new Staff(2, "Phụng Phạm", "https://i.pravatar.cc/150?img=13", "Head of SMM", "2011-03-05", 5, "Management"),
@@ -38,28 +40,30 @@ function init(){
         ]
         localStorage.setItem(staff_db, JSON.stringify(staffs))
     }
-    else{
+    else {
         staffs = JSON.parse(localStorage.getItem(staff_db));
     }
 }
 
-function renderStaff() {
-    let htmls = staffs.map(function (staf) {
+function renderStaff(checked) {
+    let htmls = staffs.map(function (staff) {
         return `
                 <tr>
-                    <td><input type="checkbox"></td>
+                    <td>
+                        <input onchange="selectStafff(${staff.id})" type="checkbox" ${checked ? "checked" : ""}>
+                    </td>
                     <td>
                         <div class="avatar-fullname">
-                            <img class="avatar" src="${staf.avatar}" alt="">
-                            <span>${staf.fullname}</span>
+                            <img class="avatar" src="${staff.avatar}" alt="">
+                            <span>${staff.fullname}</span>
                         </div>
                     </td>
-                    <td>${staf.position}</td>
-                    <td>${staf.dob}</td>
-                    <td>${staf.experience}</td>
-                    <td>${staf.skill}</td>
+                    <td>${staff.position}</td>
+                    <td>${staff.dob}</td>
+                    <td>${staff.experience}</td>
+                    <td>${staff.skill}</td>
                     <td>
-                        <i class="fa-solid fa-user-pen"></i>
+                        <i class="fa-solid fa-user-pen" onclick="editStaff(${staff.id})"></i>
                     </td>
                 </tr>`
     })
@@ -106,20 +110,25 @@ function createStaff() {
 
     staffs.push(new Staff(id, fullname, avatar, position, dob, experience, skills));
     localStorage.setItem(staff_db, JSON.stringify(staffs));
-    renderStaff();
+    renderStaff(false);
     resetCreateForm();
 }
 
-function resetCreateForm(){
+function resetCreateForm() {
+    document.querySelector('#staffId').value = 0;
     document.querySelector('#fullname').value = "";
     document.querySelector('#avatar').value = "";
     document.querySelector('#dob').value = "";
     document.querySelector('#experience').value = "";
     document.querySelector('#reviewAvatar').src = "images/noavatar.jpg";
-    
+
     renderPosition();
     renderSkills();
+
+    document.querySelector('.btn-success').classList.remove('d-none');
+    document.querySelector('.btn-warning').classList.add('d-none');
 }
+
 function getMaxId() {
     let max = 0;
     for (let i = 0; i < staffs.length; i++) {
@@ -129,11 +138,97 @@ function getMaxId() {
     }
     return max;
 }
+
+function selectAllStaff() {
+    let ckbStaffs = document.querySelector('#ckbStaffs');
+    renderStaff(ckbStaffs.checked);
+    if (ckbStaffs.checked) {
+        selectedStaffs = staffs.map(function (staff) {
+            return staff.id;
+        })
+    }
+    else {
+        selectedStaffs = [];
+    }
+    console.log(selectedStaffs);
+}
+
+function selectStafff(staffId) {
+    if (selectedStaffs.includes(staffId)) {
+        selectedStaffs = selectedStaffs.filter(function (id) {
+            return id != staffId;
+        })
+    }
+    else {
+        selectedStaffs.push(staffId);
+    }
+    document.querySelector('#ckbStaffs').checked = false;
+    console.log(selectedStaffs);
+}
+
+
+function deleteStaffs() {
+    if (selectedStaffs.length == 0) {
+        alert("Please select a staff to remove!")
+    }
+    else {
+        let confirmed = window.confirm("Are you sure to remove staff(s)?");
+        if (confirmed) {
+            for (let id of selectedStaffs) {
+                staffs = staffs.filter(function (staff) {
+                    return staff.id != id;
+                })
+            }
+            localStorage.setItem(staff_db, JSON.stringify(staffs));
+            renderStaff(false);
+            selectedStaffs = [];
+            document.querySelector('#ckbStaffs').checked = false;
+        }
+    }
+}
+
+function editStaff(staffId) {
+    let staff = staffs.find(function (staff) {
+        return staff.id == staffId;
+    })
+
+    document.querySelector('#staffId').value = staff.id;
+    document.querySelector('#fullname').value = staff.fullname;
+    document.querySelector('#avatar').value = staff.avatar;
+    document.querySelector('#dob').value = staff.dob;
+    document.querySelector('#experience').value = staff.experience;
+    document.querySelector('#reviewAvatar').src = staff.avatar;
+
+    document.querySelector('#position').value = staff.position;
+    document.querySelector('#skills').value = staff.skill;
+
+    document.querySelector('.btn-success').classList.add('d-none');
+    document.querySelector('.btn-warning').classList.remove('d-none');
+}
+
+function updateStaff() {
+    let staffId = document.querySelector('#staffId').value;
+    let staff = staffs.find(function (staff) {
+        return staff.id == staffId;
+    })
+
+    staff.fullname = document.querySelector('#fullname').value;
+    staff.avatar = document.querySelector('#avatar').value;
+    staff.position = document.querySelector('#position').value;
+    staff.dob = document.querySelector('#dob').value;
+    staff.experience = document.querySelector('#experience').value;
+    staff.skill = document.querySelector('#skills').value;
+
+    localStorage.setItem(staff_db, JSON.stringify(staffs));
+    renderStaff(false);
+    resetCreateForm();
+}
+
 function ready() {
     init();
     renderPosition();
     renderSkills();
-    renderStaff();
+    renderStaff(false);
 }
 
 ready();

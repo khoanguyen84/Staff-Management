@@ -47,6 +47,7 @@
     outline: none;
     padding: 10px 25px;
     border-radius: 3px;
+    margin-right: 3px;
 }
 
 .btn-success{
@@ -56,6 +57,33 @@
 
 .btn-success:hover{
     background-color: darkgreen;
+    cursor: pointer;
+}
+.btn-dark{
+    background-color: #333;
+    color: white;
+}
+
+.btn-dark:hover{
+    background-color: #000;
+    cursor: pointer;
+}
+.btn-danger{
+    background-color: red;
+    color: white;
+}
+
+.btn-danger:hover{
+    background-color: darkred;
+    cursor: pointer;
+}
+.btn-warning{
+    background-color: orange;
+    color: white;
+}
+
+.btn-warning:hover{
+    background-color: darkorange;
     cursor: pointer;
 }
 
@@ -93,4 +121,8 @@
     width: 30px;
     border-radius: 50%;
     margin-right: 10px;
+}
+
+.d-none{
+    display: none;
 }
