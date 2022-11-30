@@ -61,7 +61,10 @@
                         <th>
                             <input id="ckbStaffs" type="checkbox" onchange="selectAllStaff()">
                         </th>
-                        <th>Fullname</th>
+                        <th>Fullname
+                            <span id="sort_asc" class="sort" title="Ascending" onclick="sort('asc')">&#x25B2;</span>
+                            <span id="sort_desc" class="sort" title="Descending" onclick="sort('desc')">&#x25BC;</span>
+                        </th>
                         <th>Position</th>
                         <th>Date of birth</th>
                         <th>Experience</th>

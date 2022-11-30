@@ -126,3 +126,11 @@
 .d-none{
     display: none;
 }
+
+.sort{
+    cursor: pointer;
+}
+
+.sort-active{
+    color: red;
+}
