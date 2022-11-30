@@ -15,6 +15,7 @@
     padding: 10px 0px;
     display: flex;    
     justify-content: space-between;
+    transition: "width" 2s;
 }
 
 .staff-info{
@@ -84,6 +85,15 @@
 
 .btn-warning:hover{
     background-color: darkorange;
+    cursor: pointer;
+}
+.btn-secondary{
+    background-color: gray;
+    color: white;
+}
+
+.btn-secondary:hover{
+    background-color: darkgray;
     cursor: pointer;
 }
 

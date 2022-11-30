@@ -13,7 +13,7 @@
 
 <body>
     <div class="container">
-        <div class="create-staff">
+        <div class="create-staff d-none">
             <div class="staff-info">
                 <div class="form-group">
                     <label for="fullname">Fullname</label>
@@ -55,6 +55,7 @@
         </div>
         <div class="display-staff">
             <input type="button" class="btn btn-danger" value="Delete" onclick="deleteStaffs()">
+            <input type="button" class="btn btn-secondary" value="Show" onclick="displayCreateArea(this)">
             <table class="table table-hover">
                 <thead>
                     <tr>

@@ -234,22 +234,31 @@ function validURL(str) {
     return !!pattern.test(str);
 }
 
-function sort(direction){
-    if(direction == 'asc'){
-        staffs.sort(function(staff_1, staff_2){
+function sort(direction) {
+    if (direction == 'asc') {
+        staffs.sort(function (staff_1, staff_2) {
             return staff_1.id - staff_2.id;
         })
         document.querySelector('#sort_asc').classList.add('sort-active');
         document.querySelector('#sort_desc').classList.remove('sort-active');
     }
-    else{
-        staffs.sort(function(staff_1, staff_2){
+    else {
+        staffs.sort(function (staff_1, staff_2) {
             return staff_2.id - staff_1.id;
         })
         document.querySelector('#sort_asc').classList.remove('sort-active');
         document.querySelector('#sort_desc').classList.add('sort-active');
     }
     renderStaff(false);
+}
+
+function displayCreateArea(element) {
+    document.querySelector('.create-staff').classList.toggle('d-none');
+    if (element.value == "Show") {
+        element.value = "Hide";
+    } else {
+        element.value = "Show";
+    }
 }
 
 function ready() {
